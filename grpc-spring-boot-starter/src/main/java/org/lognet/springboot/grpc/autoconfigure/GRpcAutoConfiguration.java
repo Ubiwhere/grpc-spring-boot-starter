@@ -2,6 +2,7 @@ package org.lognet.springboot.grpc.autoconfigure;
 
 import io.grpc.ServerBuilder;
 import io.grpc.inprocess.InProcessServerBuilder;
+import io.grpc.netty.NettyServerBuilder;
 import io.grpc.services.HealthStatusManager;
 import org.lognet.springboot.grpc.GRpcServerBuilderConfigurer;
 import org.lognet.springboot.grpc.GRpcServerRunner;
@@ -44,6 +45,14 @@ public class GRpcAutoConfiguration {
     @Bean
     @ConditionalOnProperty(value = "grpc.enabled", havingValue = "true", matchIfMissing = true)
     public GRpcServerRunner grpcServerRunner(GRpcServerBuilderConfigurer configurer) {
+        return new GRpcServerRunner(configurer, ServerBuilder.forPort(grpcServerProperties.getPort()));
+    }
+
+    @Bean
+    @ConditionalOnProperty(value = "grpc.ssl", havingValue = "true", matchIfMissing = true)
+    public GRpcServerRunner grpcServerRunner(GRpcServerBuilderConfigurer configurer) {
+        NettyServerBuilder builder = NettyServerBuilder
+                .forPort(grpcServerProperties.getPort()).
         return new GRpcServerRunner(configurer, ServerBuilder.forPort(grpcServerProperties.getPort()));
     }
 

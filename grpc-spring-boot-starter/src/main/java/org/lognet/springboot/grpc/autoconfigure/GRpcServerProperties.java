@@ -27,6 +27,24 @@ public class GRpcServerProperties {
 
 
     /**
+     * Enables the ssl grpc server.
+     */
+    private boolean ssl = true;
+
+
+    /**
+     * Specifies the ssl Chained Certificate server.
+     */
+    private String sslCert;
+
+    /**
+     * Specifies the ssl Private Key.
+     */
+    private String sslPrivatekey;
+
+
+
+    /**
      * In process server name.
      * If  the value is not empty, the embedded in-process server will be created and started.
      *

@@ -12,8 +12,8 @@ project['signing.secretKeyRingFile']='/home/travis/.gnupg/secring.gpg'
 
 modifyPom {
     project {
-        name 'grpc-spring-boot-starter'
-        description 'grpc-spring-boot-starter'
+        name 'grpc-spring-boot-starter-ssl'
+        description 'grpc-spring-boot-starter-ssl'
         url 'https://github.com/LogNet/grpc-spring-boot-starter'
 
         scm {
